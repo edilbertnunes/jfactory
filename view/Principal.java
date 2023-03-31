@@ -35,6 +35,6 @@ public class Principal {
 		} while (bo.qtdTentativas < bo.limiteTentativa);
 
 		entrada.close();
-
+ 
 	}
 }
