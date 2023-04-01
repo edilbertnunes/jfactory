@@ -3,14 +3,14 @@ package jfactory.fabrica;
 import java.util.ArrayList;
 import java.util.List;
 
-import jfactory.estoque.Item;
+import jfactory.estoque.Insumo;
 
 public class InventarioBO {
-	List<Item> listaIngredientes = new ArrayList<>();
+	List<Insumo> listaIngredientes = new ArrayList<>();
 	
 	
-	public void adicionarIngredientes(Item item) {
-		listaIngredientes.add(item);
+	public void adicionarIngredientes(Insumo insumo) {
+		listaIngredientes.add(insumo);
 	}
 
 }
