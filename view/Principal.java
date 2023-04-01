@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import jfactory.autenticacao.Login;
 import jfactory.autenticacao.LoginBO;
-import jfactory.estoque.Item;
+import jfactory.estoque.Insumo;
 import jfactory.estoque.Produto;
 
 public class Principal {
@@ -17,7 +17,7 @@ public class Principal {
 
 		LoginBO bo = new LoginBO();
 		Login l = new Login();
-		Item it = null;
+		Insumo it = null;
 		Produto produto = new Produto();
 
 		do {
@@ -34,9 +34,9 @@ public class Principal {
 				do {
 					System.out.println("Seja bem vindo ao JFactory");
 					System.out.println("==== Etapa 1: Cadastrar Itens ==== ");
-					System.out.println("==== Etapa 2: Listar Itens do Estoque ==== ");
+					System.out.println("==== Etapa 2: Listar Insumo do Estoque ==== ");
 					System.out.println("==== Etapa 3: Definir Produto ==== ");
-					System.out.println("==== Etapa 4: Listar itens do produto  ==== ");
+					System.out.println("==== Etapa 4: Listar insumos do produto  ==== ");
 					System.out.println("==== Etapa 5: Contagem regressiva do lançamento ==== ");
 					System.out.println("==== Etapa 6 Deseja sair? digite -1");
 					opcao = entrada.nextInt();
@@ -48,23 +48,23 @@ public class Principal {
 						int op2 = 0;
 						do {
 							System.out.println("==== Adicione um item ====");
-						it = new Item();
-						System.out.print("Nome Item: ");
-						String nomeItem = entrada.nextLine();
-						it.setNomeItem(nomeItem);
+						it = new Insumo();
+						System.out.print("Nome Insumo: ");
+						String nomeInsumo = entrada.nextLine();
+						it.setNomeInsumo(nomeInsumo);
 						entrada.nextLine(); // buffer
 						
-						System.out.print("Quantidade do Item: ");
-						int qtdItem = entrada.nextInt();
-						it.setQtdItem(qtdItem);
-						System.out.print("Unidade de Medida Item: ");
-						String unidadeMedidaItem = entrada.nextLine();
-						it.setUnidadeDeMedida(unidadeMedidaItem);
+						System.out.print("Quantidade do Insumo: ");
+						int qtdInsumo = entrada.nextInt();
+						it.setQtdInsumo(qtdInsumo);
+						System.out.print("Unidade de Medida Insumo: ");
+						String unidadeMedidaInsumo = entrada.nextLine();
+						it.setUnidadeDeMedida(unidadeMedidaInsumo);
 						entrada.nextLine(); // buffer
 
-						System.out.print("Valor Item: ");
-						double valorItem = entrada.nextDouble();
-						it.setValor(valorItem);
+						System.out.print("Valor Insumo: ");
+						double valorInsumo = entrada.nextDouble();
+						it.setValor(valorInsumo);
 						
 						produto.adicionarItem(it);
 						System.out.println("Itens adicionados");
@@ -81,18 +81,18 @@ public class Principal {
 					case 2: {
 						// Consumer -interface funcional
 						// produto.listarItem().forEach(null);
-						List<Item> lista = produto.listarItem();
+						List<Insumo> lista = produto.listarInsumo();
 
 						// listando itens
-						for (Item item : lista) {
-							System.out.print(item.getNomeItem());
-							System.out.print(item.getValor());
-							System.out.println(item.getQtdItem());
-							System.out.println(item.getUnidadeDeMedida());
+						for (Insumo insumo : lista) {
+							System.out.print(insumo.getNomeInsumo());
+							System.out.print(insumo.getValor());
+							System.out.println(insumo.getQtdInsumo());
+							System.out.println(insumo.getUnidadeDeMedida());
 						}
 
 						// Mostrando total de itens
-						System.out.println("Soma produtos: " + produto.somarItem());
+						System.out.println("Soma produtos: " + produto.somarInsumo());
 					}
 
 					case 3: {
@@ -118,13 +118,13 @@ public class Principal {
 					}
 					
 					case 4: {
-						System.out.println("Listar itens do produto");
+						System.out.println("Listar insumo do produto");
 						System.out.println("Produto: "+produto.getNome());
 						System.out.println("Produto: "+produto.getDataLancamento());
 						
-						for (Item item : produto.listarItem()) {
-							System.out.println(item.getNomeItem());
-							System.out.println(item.getValor());
+						for (Insumo insumo : produto.listarInsumo()) {
+							System.out.println(insumo.getNomeInsumo());
+							System.out.println(insumo.getValor());
 						}
 						
 						

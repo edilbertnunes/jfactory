@@ -3,32 +3,32 @@ package jfactory.estoque;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Item {
+public class Insumo {
 	int id;
-	String nomeItem;
-	int qtdItem;
+	String nomeInsumo;
+	int qtdInsumo;
 	String unidadeDeMedida;
 	double valor;
 	
 	
-	public Item() {
+	public Insumo() {
 		
 	}
 	
 	public int getId() {
 		return id;
 	}
-	public String getNomeItem() {
-		return nomeItem;
+	public String getNomeInsumo() {
+		return nomeInsumo;
 	}
-	public void setNomeItem(String nomeItem) {
-		this.nomeItem = nomeItem;
+	public void setNomeInsumo(String nomeInsumo) {
+		this.nomeInsumo = nomeInsumo;
 	}
-	public int getQtdItem() {
-		return qtdItem;
+	public int getQtdInsumo() {
+		return qtdInsumo;
 	}
-	public void setQtdItem(int qtdItem) {
-		this.qtdItem = qtdItem;
+	public void setQtdInsumo(int qtdInsumo) {
+		this.qtdInsumo = qtdInsumo;
 	}
 	public String getUnidadeDeMedida() {
 		return unidadeDeMedida;

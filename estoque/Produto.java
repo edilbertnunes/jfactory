@@ -16,26 +16,26 @@ public class Produto {
 	LocalDate dataProducao;
 	double percentualLucro;
 	double valorProduto;
-	List<Item> lista = new ArrayList<>();
+	List<Insumo> lista = new ArrayList<>();
 
 	public Produto() {
 
 	}
 
 	// crud/insert
-	public void adicionarItem(Item item) {
-		lista.add(item);
+	public void adicionarItem(Insumo insumo) {
+		lista.add(insumo);
 	}
 
 	// crud select
-	public List<Item> listarItem() {
+	public List<Insumo> listarInsumo() {
 		return lista;
 	}
 
-	public double somarItem() {
+	public double somarInsumo() {
 		double soma = 0;
-		for (Item item : lista) {
-			soma += item.getValor() * item.getQtdItem();
+		for (Insumo insumo : lista) {
+			soma += insumo.getValor() * insumo.getQtdInsumo();
 		}
 		return soma;
 	}
@@ -69,11 +69,11 @@ public class Produto {
 		this.dataProducao = dataProducao;
 	}
 
-	public List<Item> getItens() {
+	public List<Insumo> getItens() {
 		return lista;
 	}
 
-	public void setItens(List<Item> itens) {
+	public void setItens(List<Insumo> itens) {
 		this.lista = itens;
 	}
 
