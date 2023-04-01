@@ -1,4 +1,4 @@
-package jfactory.fabrica;
+package jfactory.autenticacao;
 
 public class LoginBO {
 	public int qtdTentativas = 0;
