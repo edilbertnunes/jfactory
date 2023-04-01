@@ -1,15 +1,11 @@
 package jfactory.estoque;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Insumo {
 	int id;
 	String nomeInsumo;
 	int qtdInsumo;
 	String unidadeDeMedida;
 	double valor;
-	
 	
 	public Insumo() {
 		
