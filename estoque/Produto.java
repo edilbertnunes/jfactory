@@ -13,6 +13,15 @@ public class Produto {
 	LocalDate dataProducao;
 	double percentualLucro;
 	double valorProduto;
+	int quantidade; // controle de estoque
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	List<Insumo> lista = new ArrayList<>();
 
 	public Produto() {
@@ -28,7 +37,27 @@ public class Produto {
 	public List<Insumo> listarInsumo() {
 		return lista;
 	}
+	
+	public void removerInsumo(int index) {
+		lista.remove(index);
+	}
+	
+	public String atualizarInsumo(int id, Insumo insumo) {
+		lista.set(id, insumo);
+		return "Atualizado com sucesso";
+	}
 
+	public Insumo buscaPorId(int id) {
+		
+		for(Insumo i : lista) {
+			int indice = lista.indexOf(i);
+			if (id == indice) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
 	public double somarInsumo() {
 		double soma = 0;
 		for (Insumo insumo : lista) {
@@ -36,6 +65,16 @@ public class Produto {
 		}
 		return soma;
 	}
+	
+//	public void darBaixaEstoque(int id, int quantidade) { 
+//		Produto produto = findById(id); 
+//			if (produto != null && produto.getQuantidade() >= quantidade) { 
+//				produto.setQuantidade(produto.getQuantidade() - quantidade); 
+//				System.out.println("Baixa no estoque realizada com sucesso: " + produto); 
+//				} else { 
+//					System.out.println("Não foi possível dar baixa no estoque."); 
+//					} 
+//			}
 	
 	public long calcularDiasLancamento() {
 		long diferenca = ChronoUnit.DAYS.between(dataProducao, dataLancamento) ;
@@ -93,7 +132,5 @@ public class Produto {
 	public void setValorProduto(double valorProduto) {
 		this.valorProduto = valorProduto;
 	}
-	
-	
 
 }

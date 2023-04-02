@@ -1,4 +1,7 @@
 package jfactory.estoque;
+/*
+ 	A interface collection estabelece alguns padroes 
+ */
 
 public class Insumo {
 	int id;
@@ -11,9 +14,27 @@ public class Insumo {
 		
 	}
 	
+	public Insumo(int qtdInsumo) {
+		this.qtdInsumo = qtdInsumo;
+	}
+	
+	
+
+	public Insumo(String nomeInsumo, int qtdInsumo, String unidadeDeMedida, double valor) {
+		this.nomeInsumo = nomeInsumo;
+		this.qtdInsumo = qtdInsumo;
+		this.unidadeDeMedida = unidadeDeMedida;
+		this.valor = valor;
+	}
+
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNomeInsumo() {
 		return nomeInsumo;
 	}

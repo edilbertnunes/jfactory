@@ -17,9 +17,15 @@ public class Principal {
 
 		LoginBO bo = new LoginBO();
 		Login l = new Login();
-		Insumo ins = null;
+		Insumo insumo = null;
 		Produto produto = new Produto();
-
+		
+		int op = 0;
+		System.out.println("Escolha o móduto 1-Fabrica, 2-Loja");
+		op = entrada.nextInt();
+		entrada.nextLine(); // buffer
+		switch (op) {
+		case 1:
 		do {
 			System.out.print("Digite o usuário: ");
 			String usuario = entrada.nextLine();
@@ -37,8 +43,11 @@ public class Principal {
 					System.out.println("==== Etapa 2: Listar Insumo do Estoque ==== ");
 					System.out.println("==== Etapa 3: Definir Produto ==== ");
 					System.out.println("==== Etapa 4: Listar insumos do produto  ==== ");
-					System.out.println("==== Etapa 5: Contagem regressiva do lançamento ==== ");
-					System.out.println("==== Etapa 6 Deseja sair? digite -1");
+					System.out.println("==== Etapa 5: deletar insumo  ==== ");
+					System.out.println("==== Etapa 6: atualizar insumo  ==== ");
+					System.out.println("==== Etapa 7: Contagem regressiva do lançamento ==== ");
+					System.out.println("==== Etapa 8: Deseja sair? digite -1");
+					System.out.println("==== Etapa 9: Pesquisar por id ====");
 					opcao = entrada.nextInt();
 					entrada.nextLine(); // buffer
 					
@@ -48,26 +57,30 @@ public class Principal {
 						int op2 = 0;
 						do {
 							System.out.println("==== Adicione um item ====");
-						ins = new Insumo();
+						insumo = new Insumo();
+						//System.out.print("Digite o id: ");
+						// int idInsumo = entrada.nextInt();
+						//insumo.setId(idInsumo);
+						
 						System.out.print("Nome Insumo: ");
 						String nomeInsumo = entrada.nextLine();
-						ins.setNomeInsumo(nomeInsumo);
-						//entrada.nextLine(); // buffer
+						insumo.setNomeInsumo(nomeInsumo);
+						entrada.nextLine(); // buffer
 						
 						System.out.print("Quantidade do Insumo: ");
 						int qtdInsumo = entrada.nextInt();
-						ins.setQtdInsumo(qtdInsumo);
+						insumo.setQtdInsumo(qtdInsumo);
 						
-						System.out.print("Unidade de Medida Insumo: ");
-						String unidadeMedida = entrada.nextLine();
-						ins.setUnidadeDeMedida(unidadeMedida);
-						entrada.nextLine(); // buffer
+//						System.out.print("Unidade de Medida Insumo: ");
+//						String unidadeMedida = entrada.nextLine();
+//						insumo.setUnidadeDeMedida(unidadeMedida);
+//						entrada.nextLine(); // buffer
 
 						System.out.print("Valor Insumo: ");
 						double valorInsumo = entrada.nextDouble();
-						ins.setValor(valorInsumo);
+						insumo.setValor(valorInsumo);
 						
-						produto.adicionarItem(ins);
+						produto.adicionarItem(insumo);
 						System.out.println("Itens adicionados");
 						
 						System.out.print("Deseja acionar mais um item?");
@@ -75,8 +88,9 @@ public class Principal {
 						entrada.nextLine(); // buffer	
 						
 						} while (op2 != -1);
-						
+						System.out.println("Saindo...");
 						break;
+						
 					}
 					
 					case 2: {
@@ -86,19 +100,21 @@ public class Principal {
 
 						System.out.println("==== Lista de insumo cadastradas ====");
 						// listando itens
-						for (Insumo insumo : lista) {
+						for (Insumo insumos : lista) {
 							
-							int position = lista.indexOf(insumo);
+							int position = lista.indexOf(insumos);
 							System.err.println("Posição: "+position);
-							System.out.println("Insumo: "+insumo.getNomeInsumo());
-							System.out.println("Valor: "+insumo.getValor());
-							System.out.println("Quantidade: "+insumo.getQtdInsumo());
-							System.out.println("Unidade: "+insumo.getUnidadeDeMedida());
+							//System.out.println("ID: "+insumos.getId());
+							System.out.println("Insumo: "+insumos.getNomeInsumo());
+							System.out.println("Valor: "+insumos.getValor());
+							System.out.println("Quantidade: "+insumos.getQtdInsumo());
+							//System.out.println("Unidade: "+insumos.getUnidadeDeMedida());
 							System.out.println("==========");
 						}
 
 						// Mostrando total de itens
 						System.out.println("Soma produtos: " + produto.somarInsumo());
+						break;
 					}
 
 					case 3: {
@@ -128,29 +144,58 @@ public class Principal {
 						System.out.println("Produto: "+produto.getNome());
 						System.out.println("Produto: "+produto.getDataLancamento());
 						
-						for (Insumo insumo : produto.listarInsumo()) {
-							System.out.println(insumo.getNomeInsumo());
-							System.out.println(insumo.getValor());
-							System.out.println(insumo.getUnidadeDeMedida());
+						for (Insumo insumos : produto.listarInsumo()) {
+							System.out.println(insumos.getNomeInsumo());
+							System.out.println(insumos.getValor());
+							System.out.println(insumos.getUnidadeDeMedida());
 						}
+						break;
+					}
+					
+					case 5: {
+						System.out.println("==== Digite a posição do produto para excluir o insumo ====");
+						int deleteInsumo = entrada.nextInt();
+						produto.removerInsumo(deleteInsumo);	
+						break;
+					}
+					case 6: {
+						System.out.println("==== Digite a posição do produto para atualizar o insumo ====");
+						int indice = entrada.nextInt();
 						
+						insumo = produto.buscaPorId(indice);
+						// criar switch
+						System.out.println("MENU - 1 quantidade, 2 valor, 3 nome do insumo");
+						System.out.println("Atualizar quantidade");
+						insumo.setQtdInsumo(entrada.nextInt());
 						
+						// realizar pesquisa por id trazendo o insumo
+						produto.atualizarInsumo(indice, insumo);	
 						
 						break;
 					}
 					
-					
-					
-					case 5: {
+					case 7: {
 						LocalDate dataProducao = LocalDate.now();
 						produto.setDataProducao(dataProducao);
 						System.out.print(String.format("faltam %d dias para data de lancamento do produto",
-								produto.calcularDiasLancamento()));
+						produto.calcularDiasLancamento()));
 						break;
 					}
+					case 8: {
+						System.out.println("==== PESQUISAR POR ID ====");
+						int indice = entrada.nextInt();
+						insumo = produto.buscaPorId(indice);	
+						System.out.println(insumo.getNomeInsumo());
+						System.out.println(insumo.getValor());
+						break;
+					}
+					
 					}
 					
 				} while (opcao != -1);	
+				
+				System.out.println("saindo...");
+				System.exit(0);
 
 				break;
 
@@ -164,6 +209,12 @@ public class Principal {
 
 		} while (bo.qtdTentativas < bo.limiteTentativa);
 
+		break;
+		case 2:
+			System.out.println("Seja bem vindo ao JStore");
+	
+			break;
+		}
 		entrada.close();
 
 	}
