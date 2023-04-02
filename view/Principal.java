@@ -17,15 +17,15 @@ public class Principal {
 
 		LoginBO bo = new LoginBO();
 		Login l = new Login();
-		Insumo it = null;
+		Insumo ins = null;
 		Produto produto = new Produto();
 
 		do {
-			System.out.println("Digite o usuário: ");
+			System.out.print("Digite o usuário: ");
 			String usuario = entrada.nextLine();
 			l.setUsuario(usuario);
 
-			System.out.println("Digite a senha: ");
+			System.out.print("Digite a senha: ");
 			String senha = entrada.nextLine();
 			l.setSenha(senha);
 			if (bo.validaSenha(l)) {
@@ -48,25 +48,26 @@ public class Principal {
 						int op2 = 0;
 						do {
 							System.out.println("==== Adicione um item ====");
-						it = new Insumo();
+						ins = new Insumo();
 						System.out.print("Nome Insumo: ");
 						String nomeInsumo = entrada.nextLine();
-						it.setNomeInsumo(nomeInsumo);
-						entrada.nextLine(); // buffer
+						ins.setNomeInsumo(nomeInsumo);
+						//entrada.nextLine(); // buffer
 						
 						System.out.print("Quantidade do Insumo: ");
 						int qtdInsumo = entrada.nextInt();
-						it.setQtdInsumo(qtdInsumo);
+						ins.setQtdInsumo(qtdInsumo);
+						
 						System.out.print("Unidade de Medida Insumo: ");
-						String unidadeMedidaInsumo = entrada.nextLine();
-						it.setUnidadeDeMedida(unidadeMedidaInsumo);
+						String unidadeMedida = entrada.nextLine();
+						ins.setUnidadeDeMedida(unidadeMedida);
 						entrada.nextLine(); // buffer
 
 						System.out.print("Valor Insumo: ");
 						double valorInsumo = entrada.nextDouble();
-						it.setValor(valorInsumo);
+						ins.setValor(valorInsumo);
 						
-						produto.adicionarItem(it);
+						produto.adicionarItem(ins);
 						System.out.println("Itens adicionados");
 						
 						System.out.print("Deseja acionar mais um item?");
@@ -83,12 +84,17 @@ public class Principal {
 						// produto.listarItem().forEach(null);
 						List<Insumo> lista = produto.listarInsumo();
 
+						System.out.println("==== Lista de insumo cadastradas ====");
 						// listando itens
 						for (Insumo insumo : lista) {
-							System.out.print(insumo.getNomeInsumo());
-							System.out.print(insumo.getValor());
-							System.out.println(insumo.getQtdInsumo());
-							System.out.println(insumo.getUnidadeDeMedida());
+							
+							int position = lista.indexOf(insumo);
+							System.err.println("Posição: "+position);
+							System.out.println("Insumo: "+insumo.getNomeInsumo());
+							System.out.println("Valor: "+insumo.getValor());
+							System.out.println("Quantidade: "+insumo.getQtdInsumo());
+							System.out.println("Unidade: "+insumo.getUnidadeDeMedida());
+							System.out.println("==========");
 						}
 
 						// Mostrando total de itens
@@ -96,7 +102,7 @@ public class Principal {
 					}
 
 					case 3: {
-						System.out.println("=== Qual produto deseja produzir? ====");
+						System.out.println("==== Qual produto deseja produzir? ====");
 						String nomeProduto = entrada.nextLine();
 						produto.setNome(nomeProduto);
 						entrada.nextLine(); // buffer	
@@ -125,6 +131,7 @@ public class Principal {
 						for (Insumo insumo : produto.listarInsumo()) {
 							System.out.println(insumo.getNomeInsumo());
 							System.out.println(insumo.getValor());
+							System.out.println(insumo.getUnidadeDeMedida());
 						}
 						
 						
