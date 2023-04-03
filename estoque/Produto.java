@@ -38,8 +38,14 @@ public class Produto {
 		return lista;
 	}
 	
-	public void removerInsumo(int index) {
-		lista.remove(index);
+	public boolean removerInsumo(int index) {
+	    if (index < 0 || index >= lista.size()) {
+	        System.out.println("Índice inválido. O insumo não foi removido.");
+	        return false;
+	    }
+	    Insumo insumoRemovido = lista.remove(index);
+	    System.out.println("Insumo \"" + insumoRemovido.getNomeInsumo() + "\" removido com sucesso.");
+	    return true;
 	}
 	
 	public String atualizarInsumo(int id, Insumo insumo) {
@@ -79,6 +85,10 @@ public class Produto {
 	public long calcularDiasLancamento() {
 		long diferenca = ChronoUnit.DAYS.between(dataProducao, dataLancamento) ;
 		return diferenca;
+	}
+	
+	public double valorDeVendaProduto(double percentual) {
+		return this.valorProduto * (1 + percentual);
 	}
 
 	public String getNome() {

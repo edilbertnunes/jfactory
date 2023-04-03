@@ -9,16 +9,14 @@ public class Insumo {
 	int qtdInsumo;
 	String unidadeDeMedida;
 	double valor;
-	
+
 	public Insumo() {
-		
+
 	}
-	
+
 	public Insumo(int qtdInsumo) {
 		this.qtdInsumo = qtdInsumo;
 	}
-	
-	
 
 	public Insumo(String nomeInsumo, int qtdInsumo, String unidadeDeMedida, double valor) {
 		this.nomeInsumo = nomeInsumo;
@@ -30,7 +28,7 @@ public class Insumo {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -38,27 +36,33 @@ public class Insumo {
 	public String getNomeInsumo() {
 		return nomeInsumo;
 	}
+
 	public void setNomeInsumo(String nomeInsumo) {
 		this.nomeInsumo = nomeInsumo;
 	}
+
 	public int getQtdInsumo() {
 		return qtdInsumo;
 	}
+
 	public void setQtdInsumo(int qtdInsumo) {
 		this.qtdInsumo = qtdInsumo;
 	}
+
 	public String getUnidadeDeMedida() {
 		return unidadeDeMedida;
 	}
+
 	public void setUnidadeDeMedida(String unidadeDeMedida) {
 		this.unidadeDeMedida = unidadeDeMedida;
 	}
+
 	public double getValor() {
 		return valor;
 	}
+
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	
+
 }

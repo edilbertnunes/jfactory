@@ -6,32 +6,29 @@ import java.util.List;
 
 public class ProdutoDAO {
 	
-	List<Produto> lista = new ArrayList<>();
+    private List<Produto> listaProdutos;
+
+    public ProdutoDAO() {
+        listaProdutos = new ArrayList<>();
+    }
 	
 	public void adicionarProduto(Produto produto) {
-		lista.add(produto);
-	}
-
-	// crud select
-	public List<Produto> listarProduto() {
-		return lista;
+		listaProdutos.add(produto);
 	}
 	
 	public void removerProduto(int index) {
-		lista.remove(index);
+		listaProdutos.remove(index);
 	}
 	
 	public String atualizarProduto(int id, Produto produto) {
-		lista.set(id, produto);
+		listaProdutos.set(id, produto);
 		return "Atualizado com sucesso";
 	}
 
 	public Produto buscaPorId(int id) {
-		
-		for(Produto i : lista) {
-			int indice = lista.indexOf(i);
-			if (id == indice) {
-				return i;
+		for(Produto produto : listaProdutos) {
+			if (produto.getId() == id) {
+				return produto;
 			}
 		}
 		return null;
@@ -42,7 +39,9 @@ public class ProdutoDAO {
 		if(produto != null && produto.getQuantidade() >= quantidade) {
 			produto.setQuantidade(produto.getQuantidade() - quantidade);
 		}
-		
 	}
-
+	
+    public List<Produto> listarProdutos() {
+        return new ArrayList<>(listaProdutos);
+    }
 }
